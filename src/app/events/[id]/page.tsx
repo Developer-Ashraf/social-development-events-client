@@ -35,6 +35,7 @@ interface EventDetail {
 
 const API_BASE = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
 
+
 export default function EventDetailsPage({ params }: { params: Promise<{ id: string }> }) {
   const resolvedParams = use(params);
   const eventId = resolvedParams.id;

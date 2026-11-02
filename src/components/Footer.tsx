@@ -1,8 +1,12 @@
+'use client';
+
 import React from 'react';
 import Link from 'next/link';
 import { HeartHandshake, MapPin, Mail, Phone, Heart } from 'lucide-react';
 
 export default function Footer() {
+  const currentYear = new Date().getFullYear();
+
   return (
     <footer className="mt-auto bg-slate-900 text-slate-300 border-t border-slate-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
@@ -141,7 +145,7 @@ export default function Footer() {
 
         {/* Bottom Bar */}
         <div className="mt-12 pt-8 border-t border-slate-800/80 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400">
-          <p>© {new Date().getFullYear()} KindredServe. Built for community social service.</p>
+          <p>© {currentYear} KindredServe. Built for community social service.</p>
           <p className="flex items-center gap-1">
             Made with dedication by <span className="text-white font-medium">Ashraful Islam</span>
           </p>

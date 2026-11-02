@@ -36,25 +36,35 @@ const PRESET_THUMBNAILS = [
 
 const API_BASE = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
 
+
 export default function CreateEventPage() {
   const router = useRouter();
   const { user, token, isLoading } = useAuth();
 
-  // Calculate minimum date allowed (tomorrow)
-  const tomorrow = new Date();
-  tomorrow.setDate(tomorrow.getDate() + 1);
-  const minDateString = tomorrow.toISOString().split('T')[0];
+  const [minDateString, setMinDateString] = useState('');
 
   const [formData, setFormData] = useState({
     title: '',
     eventType: 'Donation',
-    eventDate: minDateString,
+    eventDate: '',
     location: '',
     thumbnail: '',
     description: ''
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  // Set minimum date allowed (tomorrow) on client mount
+  useEffect(() => {
+    const tomorrow = new Date();
+    tomorrow.setDate(tomorrow.getDate() + 1);
+    const dateStr = tomorrow.toISOString().split('T')[0];
+    setMinDateString(dateStr);
+    setFormData((prev) => ({
+      ...prev,
+      eventDate: prev.eventDate || dateStr
+    }));
+  }, []);
 
   // Protected route check: Ensure session is checked before redirecting
   useEffect(() => {

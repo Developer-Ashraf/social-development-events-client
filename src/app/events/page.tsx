@@ -38,6 +38,7 @@ const CATEGORIES = [
 
 const API_BASE = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
 
+
 export default function UpcomingEventsPage() {
   const [events, setEvents] = useState<EventItem[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
