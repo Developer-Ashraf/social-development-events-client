@@ -3,6 +3,8 @@ import './globals.css';
 import { ThemeProvider } from '@/components/theme-provider';
 import { AuthProvider } from '@/context/AuthContext';
 import { Toaster } from 'sonner';
+import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
   title: 'KindredServe | Community-Driven Social Development Events Platform',
@@ -16,7 +18,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className="antialiased selection:bg-emerald-500 selection:text-white">
+      <body className="antialiased selection:bg-emerald-500 selection:text-white flex flex-col min-h-screen">
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
@@ -25,7 +27,9 @@ export default function RootLayout({
         >
           <AuthProvider>
             <Toaster position="top-right" richColors closeButton />
-            {children}
+            <Navbar />
+            <main className="flex-1">{children}</main>
+            <Footer />
           </AuthProvider>
         </ThemeProvider>
       </body>
