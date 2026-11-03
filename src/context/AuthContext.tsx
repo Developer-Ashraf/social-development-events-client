@@ -17,7 +17,8 @@ interface AuthContextType {
   isLoading: boolean;
   login: (email: string, password: string) => Promise<boolean>;
   register: (name: string, email: string, photoURL: string, password: string) => Promise<boolean>;
-  loginWithGoogle: () => Promise<boolean>;
+  loginWithGoogle: (customUser?: { name: string; email: string; photoURL?: string }) => Promise<boolean>;
+  loginWithGitHub: (customUser?: { name: string; email: string; photoURL?: string }) => Promise<boolean>;
   logout: () => void;
   updateUser: (updatedData: { name: string; photoURL?: string }) => void;
 }
@@ -122,11 +123,10 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     }
   };
 
-  // Google Sign-In (Simulated OAuth flow for standard web dev assignment)
-  const loginWithGoogle = async (): Promise<boolean> => {
+  // Google Sign-In
+  const loginWithGoogle = async (customUser?: { name: string; email: string; photoURL?: string }): Promise<boolean> => {
     try {
-      // Demo Google profile or standard OAuth payload
-      const googleUser = {
+      const googleUser = customUser || {
         name: 'Ashraful Islam (Google)',
         email: 'developer.ashraful.wp@gmail.com',
         photoURL: 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=150'
@@ -159,6 +159,42 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     }
   };
 
+  // GitHub Sign-In
+  const loginWithGitHub = async (customUser?: { name: string; email: string; photoURL?: string }): Promise<boolean> => {
+    try {
+      const githubUser = customUser || {
+        name: 'Developer-Ashraf',
+        email: 'ashraf.dev@github.com',
+        photoURL: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150'
+      };
+
+      const res = await fetch(`${API_BASE}/api/auth/github`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(githubUser)
+      });
+
+      const data = await res.json();
+
+      if (!res.ok || !data.success) {
+        toast.error(data.message || 'GitHub authentication failed.');
+        return false;
+      }
+
+      setToken(data.token);
+      setUser(data.user);
+      localStorage.setItem('token', data.token);
+      localStorage.setItem('user', JSON.stringify(data.user));
+
+      toast.success('Successfully authenticated with GitHub!');
+      return true;
+    } catch (error) {
+      console.error('GitHub login error:', error);
+      toast.error('Failed to connect to GitHub authentication.');
+      return false;
+    }
+  };
+
   // Logout
   const logout = () => {
     setUser(null);
@@ -186,6 +222,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         login,
         register,
         loginWithGoogle,
+        loginWithGitHub,
         logout,
         updateUser
       }}
