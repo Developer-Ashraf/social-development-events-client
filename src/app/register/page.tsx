@@ -74,7 +74,7 @@ export default function RegisterPage() {
         
         {/* Header */}
         <div className="text-center space-y-2">
-          <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-emerald-100 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 mb-2">
+          <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-indigo-100 dark:bg-indigo-950/60 text-indigo-600 dark:text-indigo-400 mb-2">
             <HeartHandshake className="w-8 h-8" />
           </div>
           <h2 className="text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white">
@@ -91,7 +91,7 @@ export default function RegisterPage() {
           {/* Full Name */}
           <div>
             <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5">
-              Full Name <span className="text-emerald-500">*</span>
+              Full Name <span className="text-indigo-500">*</span>
             </label>
             <div className="relative">
               <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
@@ -104,7 +104,7 @@ export default function RegisterPage() {
                 onChange={handleChange}
                 placeholder="e.g. Tanvir Ahmed"
                 required
-                className="w-full pl-11 pr-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white placeholder-slate-400 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/30 focus:border-emerald-500 transition-all"
+                className="w-full pl-11 pr-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white placeholder-slate-400 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/30 focus:border-indigo-500 transition-all"
               />
             </div>
           </div>
@@ -112,7 +112,7 @@ export default function RegisterPage() {
           {/* Email Address */}
           <div>
             <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5">
-              Email Address <span className="text-emerald-500">*</span>
+              Email Address <span className="text-indigo-500">*</span>
             </label>
             <div className="relative">
               <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
@@ -125,7 +125,7 @@ export default function RegisterPage() {
                 onChange={handleChange}
                 placeholder="name@example.com"
                 required
-                className="w-full pl-11 pr-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white placeholder-slate-400 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/30 focus:border-emerald-500 transition-all"
+                className="w-full pl-11 pr-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white placeholder-slate-400 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/30 focus:border-indigo-500 transition-all"
               />
             </div>
           </div>
@@ -145,7 +145,7 @@ export default function RegisterPage() {
                 value={formData.photoURL}
                 onChange={handleChange}
                 placeholder="https://images.unsplash.com/..."
-                className="w-full pl-11 pr-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white placeholder-slate-400 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/30 focus:border-emerald-500 transition-all"
+                className="w-full pl-11 pr-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white placeholder-slate-400 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/30 focus:border-indigo-500 transition-all"
               />
             </div>
           </div>
@@ -153,7 +153,7 @@ export default function RegisterPage() {
           {/* Password */}
           <div>
             <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5">
-              Password <span className="text-emerald-500">*</span>
+              Password <span className="text-indigo-500">*</span>
             </label>
             <div className="relative">
               <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
@@ -166,7 +166,7 @@ export default function RegisterPage() {
                 onChange={handleChange}
                 placeholder="••••••••"
                 required
-                className="w-full pl-11 pr-11 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white placeholder-slate-400 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/30 focus:border-emerald-500 transition-all"
+                className="w-full pl-11 pr-11 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white placeholder-slate-400 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/30 focus:border-indigo-500 transition-all"
               />
               <button
                 type="button"
@@ -183,33 +183,33 @@ export default function RegisterPage() {
               
               <div className="flex items-center gap-2">
                 {hasUpperCase ? (
-                  <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0" />
+                  <CheckCircle2 className="w-4 h-4 text-indigo-500 shrink-0" />
                 ) : (
                   <XCircle className="w-4 h-4 text-slate-400 dark:text-slate-500 shrink-0" />
                 )}
-                <span className={hasUpperCase ? 'text-emerald-600 dark:text-emerald-400 font-medium' : 'text-slate-500 dark:text-slate-400'}>
+                <span className={hasUpperCase ? 'text-indigo-600 dark:text-indigo-400 font-medium' : 'text-slate-500 dark:text-slate-400'}>
                   At least one uppercase letter (A-Z)
                 </span>
               </div>
 
               <div className="flex items-center gap-2">
                 {hasLowerCase ? (
-                  <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0" />
+                  <CheckCircle2 className="w-4 h-4 text-indigo-500 shrink-0" />
                 ) : (
                   <XCircle className="w-4 h-4 text-slate-400 dark:text-slate-500 shrink-0" />
                 )}
-                <span className={hasLowerCase ? 'text-emerald-600 dark:text-emerald-400 font-medium' : 'text-slate-500 dark:text-slate-400'}>
+                <span className={hasLowerCase ? 'text-indigo-600 dark:text-indigo-400 font-medium' : 'text-slate-500 dark:text-slate-400'}>
                   At least one lowercase letter (a-z)
                 </span>
               </div>
 
               <div className="flex items-center gap-2">
                 {hasMinLength ? (
-                  <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0" />
+                  <CheckCircle2 className="w-4 h-4 text-indigo-500 shrink-0" />
                 ) : (
                   <XCircle className="w-4 h-4 text-slate-400 dark:text-slate-500 shrink-0" />
                 )}
-                <span className={hasMinLength ? 'text-emerald-600 dark:text-emerald-400 font-medium' : 'text-slate-500 dark:text-slate-400'}>
+                <span className={hasMinLength ? 'text-indigo-600 dark:text-indigo-400 font-medium' : 'text-slate-500 dark:text-slate-400'}>
                   Minimum 6 characters in length
                 </span>
               </div>
@@ -220,7 +220,7 @@ export default function RegisterPage() {
           <button
             type="submit"
             disabled={isSubmitting}
-            className="w-full py-3.5 px-4 rounded-xl text-white font-medium bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 shadow-md shadow-emerald-600/20 hover:shadow-emerald-600/30 transition-all duration-200 flex items-center justify-center gap-2 active:scale-[0.99] disabled:opacity-70 disabled:cursor-not-allowed"
+            className="w-full py-3.5 px-4 rounded-xl text-white font-medium bg-gradient-to-r from-indigo-600 to-blue-600 hover:from-indigo-700 hover:to-blue-700 shadow-md shadow-indigo-600/20 hover:shadow-indigo-600/30 transition-all duration-200 flex items-center justify-center gap-2 active:scale-[0.99] disabled:opacity-70 disabled:cursor-not-allowed"
           >
             {isSubmitting ? (
               <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
@@ -277,7 +277,7 @@ export default function RegisterPage() {
           Already have an account?{' '}
           <Link
             href="/login"
-            className="font-semibold text-emerald-600 dark:text-emerald-400 hover:text-emerald-500 hover:underline transition-colors"
+            className="font-semibold text-indigo-600 dark:text-indigo-400 hover:text-indigo-500 hover:underline transition-colors"
           >
             Sign In here
           </Link>

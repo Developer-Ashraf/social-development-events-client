@@ -87,7 +87,7 @@ export default function ProfilePage() {
   if (authLoading || !user) {
     return (
       <div className="min-h-[70vh] flex items-center justify-center">
-        <div className="w-10 h-10 border-4 border-emerald-500 border-t-transparent rounded-full animate-spin" />
+        <div className="w-10 h-10 border-4 border-indigo-500 border-t-transparent rounded-full animate-spin" />
       </div>
     );
   }
@@ -115,7 +115,7 @@ export default function ProfilePage() {
           
           {/* Avatar Preview Header */}
           <div className="flex flex-col sm:flex-row items-center gap-6 pb-8 border-b border-slate-100 dark:border-slate-800">
-            <div className="relative w-24 h-24 rounded-full overflow-hidden ring-4 ring-emerald-500/30 bg-emerald-100 dark:bg-emerald-950 shrink-0 shadow-md">
+            <div className="relative w-24 h-24 rounded-full overflow-hidden ring-4 ring-indigo-500/30 bg-indigo-100 dark:bg-indigo-950 shrink-0 shadow-md">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={formData.photoURL || user.photoURL || 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150'}
@@ -129,10 +129,10 @@ export default function ProfilePage() {
                 {user.name}
               </h2>
               <p className="text-sm text-slate-500 dark:text-slate-400 flex items-center justify-center sm:justify-start gap-1.5">
-                <Mail className="w-4 h-4 text-emerald-500" />
+                <Mail className="w-4 h-4 text-indigo-500" />
                 <span>{user.email}</span>
               </p>
-              <div className="pt-1 flex items-center justify-center sm:justify-start gap-2 text-xs text-emerald-600 dark:text-emerald-400 font-medium">
+              <div className="pt-1 flex items-center justify-center sm:justify-start gap-2 text-xs text-indigo-600 dark:text-indigo-400 font-medium">
                 <ShieldCheck className="w-4 h-4" />
                 <span>Verified Volunteer & Organizer</span>
               </div>
@@ -145,7 +145,7 @@ export default function ProfilePage() {
             {/* Display Name */}
             <div>
               <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5 flex items-center gap-1.5">
-                <User className="w-4 h-4 text-emerald-500" />
+                <User className="w-4 h-4 text-indigo-500" />
                 <span>Display Name</span>
               </label>
               <input
@@ -153,14 +153,14 @@ export default function ProfilePage() {
                 value={formData.name}
                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                 required
-                className="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white placeholder-slate-400 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/30 focus:border-emerald-500 transition-all"
+                className="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white placeholder-slate-400 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/30 focus:border-indigo-500 transition-all"
               />
             </div>
 
             {/* Profile Photo URL */}
             <div>
               <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5 flex items-center gap-1.5">
-                <ImageIcon className="w-4 h-4 text-emerald-500" />
+                <ImageIcon className="w-4 h-4 text-indigo-500" />
                 <span>Profile Photo URL</span>
               </label>
               <input
@@ -168,7 +168,7 @@ export default function ProfilePage() {
                 value={formData.photoURL}
                 onChange={(e) => setFormData({ ...formData, photoURL: e.target.value })}
                 placeholder="https://images.unsplash.com/..."
-                className="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white placeholder-slate-400 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/30 focus:border-emerald-500 transition-all"
+                className="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white placeholder-slate-400 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/30 focus:border-indigo-500 transition-all"
               />
               <p className="mt-1 text-xs text-slate-400">
                 Paste any valid image URL (e.g. Unsplash or Gravatar).
@@ -197,7 +197,7 @@ export default function ProfilePage() {
               <button
                 type="submit"
                 disabled={isUpdating}
-                className="w-full sm:w-auto px-8 py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-sm shadow-md shadow-emerald-600/20 transition-all flex items-center justify-center gap-2 active:scale-95 disabled:opacity-70"
+                className="w-full sm:w-auto px-8 py-3.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-semibold text-sm shadow-md shadow-indigo-600/20 transition-all flex items-center justify-center gap-2 active:scale-95 disabled:opacity-70"
               >
                 {isUpdating ? (
                   <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />

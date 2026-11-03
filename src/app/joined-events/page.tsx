@@ -76,7 +76,7 @@ export default function JoinedEventsPage() {
   if (authLoading || !user) {
     return (
       <div className="min-h-[70vh] flex items-center justify-center">
-        <div className="w-10 h-10 border-4 border-emerald-500 border-t-transparent rounded-full animate-spin" />
+        <div className="w-10 h-10 border-4 border-indigo-500 border-t-transparent rounded-full animate-spin" />
       </div>
     );
   }
@@ -141,7 +141,7 @@ export default function JoinedEventsPage() {
               return (
                 <div
                   key={item._id}
-                  className="flex flex-col h-full rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 overflow-hidden shadow-sm hover:shadow-xl hover:shadow-emerald-500/5 transition-all duration-200 group"
+                  className="flex flex-col h-full rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 overflow-hidden shadow-sm hover:shadow-xl hover:shadow-indigo-500/5 transition-all duration-200 group"
                 >
                   {/* Thumbnail Image */}
                   <div className="relative h-48 w-full overflow-hidden bg-slate-100 dark:bg-slate-800">
@@ -153,14 +153,14 @@ export default function JoinedEventsPage() {
                     />
 
                     <div className="absolute top-4 left-4">
-                      <span className="px-3 py-1 rounded-full text-xs font-semibold bg-white/95 dark:bg-slate-900/95 text-emerald-700 dark:text-emerald-400 shadow-md backdrop-blur-sm border border-slate-200/40">
+                      <span className="px-3 py-1 rounded-full text-xs font-semibold bg-white/95 dark:bg-slate-900/95 text-indigo-700 dark:text-amber-400 shadow-md backdrop-blur-sm border border-slate-200/40">
                         {item.eventType}
                       </span>
                     </div>
 
                     <div className="absolute bottom-3 left-4 right-4 flex items-center justify-between text-xs font-medium text-white bg-slate-950/70 backdrop-blur-md px-3 py-1.5 rounded-xl border border-white/10">
                       <div className="flex items-center gap-1.5">
-                        <Calendar className="w-3.5 h-3.5 text-emerald-400" />
+                        <Calendar className="w-3.5 h-3.5 text-amber-400" />
                         <span>{formattedDate}</span>
                       </div>
                     </div>
@@ -169,12 +169,12 @@ export default function JoinedEventsPage() {
                   {/* Body */}
                   <div className="p-6 flex-1 flex flex-col justify-between space-y-4">
                     <div className="space-y-2">
-                      <h3 className="text-xl font-bold text-slate-900 dark:text-white line-clamp-1 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
+                      <h3 className="text-xl font-bold text-slate-900 dark:text-white line-clamp-1 group-hover:text-indigo-600 dark:group-hover:text-amber-400 transition-colors">
                         {item.eventTitle}
                       </h3>
 
                       <p className="flex items-center gap-2 text-sm text-slate-500 dark:text-slate-400">
-                        <MapPin className="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0" />
+                        <MapPin className="w-4 h-4 text-indigo-600 dark:text-amber-400 shrink-0" />
                         <span className="truncate">{item.location}</span>
                       </p>
 
@@ -192,7 +192,7 @@ export default function JoinedEventsPage() {
                     {/* View Event Button */}
                     <Link
                       href={`/events/${item.eventId}`}
-                      className="w-full mt-2 py-3 rounded-xl text-center text-sm font-semibold text-emerald-700 dark:text-emerald-300 bg-emerald-50 dark:bg-emerald-950/50 hover:bg-emerald-600 hover:text-white dark:hover:bg-emerald-600 dark:hover:text-white border border-emerald-200/80 dark:border-emerald-800/60 transition-all duration-200 flex items-center justify-center gap-2"
+                      className="w-full mt-2 py-3 rounded-xl text-center text-sm font-semibold text-indigo-700 dark:text-indigo-300 bg-indigo-50 dark:bg-indigo-950/50 hover:bg-indigo-600 hover:text-white dark:hover:bg-indigo-600 dark:hover:text-white border border-emerald-200/80 dark:border-emerald-800/60 transition-all duration-200 flex items-center justify-center gap-2"
                     >
                       <span>View Event</span>
                       <ArrowRight className="w-4 h-4" />
@@ -218,7 +218,7 @@ export default function JoinedEventsPage() {
             </p>
             <Link
               href="/events"
-              className="mt-6 inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-semibold transition-colors"
+              className="mt-6 inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-semibold transition-colors"
             >
               <span>Explore Upcoming Events</span>
               <ArrowRight className="w-4 h-4" />

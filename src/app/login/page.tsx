@@ -58,7 +58,7 @@ function LoginForm() {
     <div className="max-w-md w-full space-y-8 bg-white dark:bg-slate-900 p-8 sm:p-10 rounded-3xl border border-slate-200/80 dark:border-slate-800 shadow-xl shadow-slate-900/5">
       {/* Header */}
       <div className="text-center space-y-2">
-        <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-emerald-100 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 mb-2">
+        <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-indigo-100 dark:bg-indigo-950/60 text-indigo-600 dark:text-indigo-400 mb-2">
           <HeartHandshake className="w-8 h-8" />
         </div>
         <h2 className="text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white">
@@ -86,7 +86,7 @@ function LoginForm() {
               onChange={handleChange}
               placeholder="name@example.com"
               required
-              className="w-full pl-11 pr-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white placeholder-slate-400 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/30 focus:border-emerald-500 transition-all"
+              className="w-full pl-11 pr-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white placeholder-slate-400 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/30 focus:border-indigo-500 transition-all"
             />
           </div>
         </div>
@@ -109,7 +109,7 @@ function LoginForm() {
               onChange={handleChange}
               placeholder="••••••••"
               required
-              className="w-full pl-11 pr-11 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white placeholder-slate-400 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/30 focus:border-emerald-500 transition-all"
+              className="w-full pl-11 pr-11 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white placeholder-slate-400 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/30 focus:border-indigo-500 transition-all"
             />
             <button
               type="button"
@@ -124,7 +124,7 @@ function LoginForm() {
         <button
           type="submit"
           disabled={isSubmitting}
-          className="w-full py-3.5 px-4 rounded-xl text-white font-medium bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 shadow-md shadow-emerald-600/20 hover:shadow-emerald-600/30 transition-all duration-200 flex items-center justify-center gap-2 active:scale-[0.99] disabled:opacity-70 disabled:cursor-not-allowed"
+          className="w-full py-3.5 px-4 rounded-xl text-white font-medium bg-gradient-to-r from-indigo-600 to-blue-600 hover:from-indigo-700 hover:to-blue-700 shadow-md shadow-indigo-600/20 hover:shadow-indigo-600/30 transition-all duration-200 flex items-center justify-center gap-2 active:scale-[0.99] disabled:opacity-70 disabled:cursor-not-allowed"
         >
           {isSubmitting ? (
             <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
@@ -180,7 +180,7 @@ function LoginForm() {
         Don&apos;t have an account?{' '}
         <Link
           href="/register"
-          className="font-semibold text-emerald-600 dark:text-emerald-400 hover:text-emerald-500 hover:underline transition-colors"
+          className="font-semibold text-indigo-600 dark:text-indigo-400 hover:text-indigo-500 hover:underline transition-colors"
         >
           Register here
         </Link>
@@ -192,7 +192,7 @@ function LoginForm() {
 export default function LoginPage() {
   return (
     <div className="min-h-[calc(100vh-160px)] flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 bg-slate-50/50 dark:bg-slate-950/40">
-      <Suspense fallback={<div className="w-10 h-10 border-4 border-emerald-500 border-t-transparent rounded-full animate-spin" />}>
+      <Suspense fallback={<div className="w-10 h-10 border-4 border-indigo-500 border-t-transparent rounded-full animate-spin" />}>
         <LoginForm />
       </Suspense>
     </div>

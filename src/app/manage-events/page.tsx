@@ -197,7 +197,7 @@ export default function ManageEventsPage() {
   if (authLoading || !user) {
     return (
       <div className="min-h-[70vh] flex items-center justify-center">
-        <div className="w-10 h-10 border-4 border-emerald-500 border-t-transparent rounded-full animate-spin" />
+        <div className="w-10 h-10 border-4 border-indigo-500 border-t-transparent rounded-full animate-spin" />
       </div>
     );
   }
@@ -223,7 +223,7 @@ export default function ManageEventsPage() {
 
           <Link
             href="/create-event"
-            className="self-start md:self-auto px-5 py-3 rounded-2xl bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-sm shadow-md shadow-emerald-600/20 flex items-center gap-2 active:scale-95 transition-all"
+            className="self-start md:self-auto px-5 py-3 rounded-2xl bg-indigo-600 hover:bg-indigo-700 text-white font-semibold text-sm shadow-md shadow-indigo-600/20 flex items-center gap-2 active:scale-95 transition-all"
           >
             <PlusCircle className="w-5 h-5" />
             <span>Create New Event</span>
@@ -258,7 +258,7 @@ export default function ManageEventsPage() {
               return (
                 <div
                   key={event._id}
-                  className="flex flex-col h-full rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 overflow-hidden shadow-sm hover:shadow-xl hover:shadow-emerald-500/5 transition-all duration-200"
+                  className="flex flex-col h-full rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 overflow-hidden shadow-sm hover:shadow-xl hover:shadow-indigo-500/5 transition-all duration-200"
                 >
                   {/* Thumbnail Image */}
                   <div className="relative h-48 w-full overflow-hidden bg-slate-100 dark:bg-slate-800">
@@ -269,14 +269,14 @@ export default function ManageEventsPage() {
                       className="w-full h-full object-cover"
                     />
                     <div className="absolute top-4 left-4">
-                      <span className="px-3 py-1 rounded-full text-xs font-semibold bg-white/95 dark:bg-slate-900/95 text-emerald-700 dark:text-emerald-400 shadow-md backdrop-blur-sm border border-slate-200/40">
+                      <span className="px-3 py-1 rounded-full text-xs font-semibold bg-white/95 dark:bg-slate-900/95 text-indigo-700 dark:text-amber-400 shadow-md backdrop-blur-sm border border-slate-200/40">
                         {event.eventType}
                       </span>
                     </div>
 
                     <div className="absolute bottom-3 left-4 right-4 flex items-center justify-between text-xs font-medium text-white bg-slate-950/70 backdrop-blur-md px-3 py-1.5 rounded-xl border border-white/10">
                       <div className="flex items-center gap-1.5">
-                        <Calendar className="w-3.5 h-3.5 text-emerald-400" />
+                        <Calendar className="w-3.5 h-3.5 text-amber-400" />
                         <span>{formattedDate}</span>
                       </div>
                     </div>
@@ -289,7 +289,7 @@ export default function ManageEventsPage() {
                         {event.title}
                       </h3>
                       <p className="flex items-center gap-2 text-sm text-slate-500 dark:text-slate-400">
-                        <MapPin className="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0" />
+                        <MapPin className="w-4 h-4 text-indigo-600 dark:text-amber-400 shrink-0" />
                         <span className="truncate">{event.location}</span>
                       </p>
                       <p className="text-sm text-slate-600 dark:text-slate-300 line-clamp-2 leading-relaxed">
@@ -344,7 +344,7 @@ export default function ManageEventsPage() {
             </p>
             <Link
               href="/create-event"
-              className="mt-6 inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-semibold transition-colors"
+              className="mt-6 inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-semibold transition-colors"
             >
               <PlusCircle className="w-4 h-4" />
               <span>Create Your First Event</span>
@@ -389,7 +389,7 @@ export default function ManageEventsPage() {
                   value={editFormData.title}
                   onChange={(e) => setEditFormData({ ...editFormData, title: e.target.value })}
                   required
-                  className="w-full px-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/30"
+                  className="w-full px-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/30"
                 />
               </div>
 
@@ -402,7 +402,7 @@ export default function ManageEventsPage() {
                   <select
                     value={editFormData.eventType}
                     onChange={(e) => setEditFormData({ ...editFormData, eventType: e.target.value })}
-                    className="w-full px-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/30"
+                    className="w-full px-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/30"
                   >
                     {CATEGORIES.map((cat) => (
                       <option key={cat} value={cat}>
@@ -421,7 +421,7 @@ export default function ManageEventsPage() {
                     value={editFormData.eventDate}
                     onChange={(e) => setEditFormData({ ...editFormData, eventDate: e.target.value })}
                     required
-                    className="w-full px-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/30"
+                    className="w-full px-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/30"
                   />
                 </div>
               </div>
@@ -436,7 +436,7 @@ export default function ManageEventsPage() {
                   value={editFormData.location}
                   onChange={(e) => setEditFormData({ ...editFormData, location: e.target.value })}
                   required
-                  className="w-full px-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/30"
+                  className="w-full px-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/30"
                 />
               </div>
 
@@ -449,7 +449,7 @@ export default function ManageEventsPage() {
                   type="url"
                   value={editFormData.thumbnail}
                   onChange={(e) => setEditFormData({ ...editFormData, thumbnail: e.target.value })}
-                  className="w-full px-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/30"
+                  className="w-full px-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/30"
                 />
               </div>
 
@@ -463,7 +463,7 @@ export default function ManageEventsPage() {
                   value={editFormData.description}
                   onChange={(e) => setEditFormData({ ...editFormData, description: e.target.value })}
                   required
-                  className="w-full px-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/30"
+                  className="w-full px-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/30"
                 />
               </div>
 
@@ -479,7 +479,7 @@ export default function ManageEventsPage() {
                 <button
                   type="submit"
                   disabled={isUpdating}
-                  className="px-6 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-semibold transition-colors flex items-center gap-2 active:scale-95 disabled:opacity-70"
+                  className="px-6 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-semibold transition-colors flex items-center gap-2 active:scale-95 disabled:opacity-70"
                 >
                   {isUpdating ? 'Saving...' : 'Save Changes'}
                 </button>

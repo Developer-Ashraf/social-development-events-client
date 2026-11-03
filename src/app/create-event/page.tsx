@@ -14,7 +14,8 @@ import {
   PlusCircle,
   ArrowLeft,
   Mail,
-  AlertCircle
+  Compass,
+  Sparkles
 } from 'lucide-react';
 
 const CATEGORIES = [
@@ -35,7 +36,6 @@ const PRESET_THUMBNAILS = [
 ];
 
 const API_BASE = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
-
 
 export default function CreateEventPage() {
   const router = useRouter();
@@ -69,7 +69,7 @@ export default function CreateEventPage() {
   // Protected route check: Ensure session is checked before redirecting
   useEffect(() => {
     if (!isLoading && !user) {
-      toast.info('Please log in to create a community event.');
+      toast.info('Please log in to initiate a community drive.');
       router.push('/login?redirect=/create-event');
     }
   }, [user, isLoading, router]);
@@ -87,11 +87,10 @@ export default function CreateEventPage() {
     e.preventDefault();
 
     if (!user || !token) {
-      toast.error('You must be logged in to create an event.');
+      toast.error('You must be logged in to create an initiative.');
       return;
     }
 
-    // Form field validation
     if (
       !formData.title.trim() ||
       !formData.location.trim() ||
@@ -108,7 +107,7 @@ export default function CreateEventPage() {
     today.setHours(0, 0, 0, 0);
 
     if (isNaN(selectedDate.getTime()) || selectedDate <= today) {
-      toast.error('Event date must be in the future. Past dates cannot be added.');
+      toast.error('Event date must be in the future. Past dates cannot be selected.');
       return;
     }
 
@@ -136,12 +135,12 @@ export default function CreateEventPage() {
       const data = await res.json();
 
       if (!res.ok || !data.success) {
-        toast.error(data.message || 'Failed to create event.');
+        toast.error(data.message || 'Failed to create initiative.');
         setIsSubmitting(false);
         return;
       }
 
-      toast.success(data.message || 'Event created successfully!');
+      toast.success(data.message || 'Initiative created successfully!');
       router.push('/events');
 
     } catch (err) {
@@ -154,36 +153,36 @@ export default function CreateEventPage() {
   if (isLoading || !user) {
     return (
       <div className="min-h-[70vh] flex items-center justify-center">
-        <div className="w-10 h-10 border-4 border-emerald-500 border-t-transparent rounded-full animate-spin" />
+        <div className="w-10 h-10 border-4 border-indigo-500 border-t-transparent rounded-full animate-spin" />
       </div>
     );
   }
 
   return (
-    <div className="py-12 bg-slate-50/50 dark:bg-slate-950/40 min-h-screen">
+    <div className="py-12 bg-slate-50/60 dark:bg-slate-950/60 min-h-screen transition-colors">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
         
         {/* Breadcrumb */}
         <Link
           href="/events"
-          className="inline-flex items-center gap-2 text-sm font-semibold text-slate-600 dark:text-slate-400 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors"
+          className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
         >
           <ArrowLeft className="w-4 h-4" />
-          <span>Back to Upcoming Events</span>
+          <span>Back to All Drives</span>
         </Link>
 
         {/* Card */}
-        <div className="bg-white dark:bg-slate-900 p-8 sm:p-12 rounded-3xl border border-slate-200/80 dark:border-slate-800 shadow-xl shadow-slate-900/5">
+        <div className="bg-white dark:bg-slate-900 p-8 sm:p-12 rounded-3xl border border-slate-200/90 dark:border-slate-800 shadow-xl shadow-slate-900/5">
           
           <div className="space-y-2 mb-8">
-            <span className="text-xs font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-widest">
-              Social Service Drive
+            <span className="text-xs font-bold text-indigo-600 dark:text-indigo-400 uppercase tracking-widest">
+              Civic Campaign Launchpad
             </span>
-            <h1 className="text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">
-              Create a Community Event
+            <h1 className="text-3xl font-black text-slate-900 dark:text-white tracking-tight">
+              Initiate a Grassroots Drive
             </h1>
-            <p className="text-sm text-slate-500 dark:text-slate-400">
-              Organize a local relief effort, environmental cleanup, or community support drive.
+            <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400">
+              Mobilize volunteers for winter relief, medical camps, or neighborhood improvement.
             </p>
           </div>
 
@@ -191,8 +190,8 @@ export default function CreateEventPage() {
             
             {/* Event Title */}
             <div>
-              <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5">
-                Event Title <span className="text-emerald-500">*</span>
+              <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-2">
+                Initiative Title <span className="text-rose-500">*</span>
               </label>
               <input
                 type="text"
@@ -201,7 +200,7 @@ export default function CreateEventPage() {
                 onChange={handleChange}
                 placeholder="e.g. Winter Clothes Distribution - Mirpur 10, Dhaka"
                 required
-                className="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white placeholder-slate-400 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/30 focus:border-emerald-500 transition-all"
+                className="w-full px-4 py-3 rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white placeholder-slate-400 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/30 focus:border-indigo-500 transition-all font-medium"
               />
             </div>
 
@@ -210,15 +209,15 @@ export default function CreateEventPage() {
               
               {/* Event Type Dropdown */}
               <div>
-                <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5 flex items-center gap-1.5">
-                  <Tag className="w-4 h-4 text-emerald-500" />
-                  <span>Event Type</span>
+                <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-2 flex items-center gap-1.5">
+                  <Tag className="w-3.5 h-3.5 text-indigo-500" />
+                  <span>Category</span>
                 </label>
                 <select
                   name="eventType"
                   value={formData.eventType}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/30 focus:border-emerald-500 transition-all cursor-pointer"
+                  className="w-full px-4 py-3 rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/30 focus:border-indigo-500 transition-all cursor-pointer font-medium"
                 >
                   {CATEGORIES.map((cat) => (
                     <option key={cat} value={cat}>
@@ -230,9 +229,9 @@ export default function CreateEventPage() {
 
               {/* Event Date (Strict Future Date Validation) */}
               <div>
-                <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5 flex items-center gap-1.5">
-                  <Calendar className="w-4 h-4 text-emerald-500" />
-                  <span>Event Date</span> <span className="text-emerald-500">*</span>
+                <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-2 flex items-center gap-1.5">
+                  <Calendar className="w-3.5 h-3.5 text-indigo-500" />
+                  <span>Drive Date</span> <span className="text-rose-500">*</span>
                 </label>
                 <input
                   type="date"
@@ -241,10 +240,10 @@ export default function CreateEventPage() {
                   value={formData.eventDate}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/30 focus:border-emerald-500 transition-all"
+                  className="w-full px-4 py-3 rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/30 focus:border-indigo-500 transition-all font-medium"
                 />
                 <p className="mt-1 text-[11px] text-slate-400 dark:text-slate-500">
-                  Date must be in the future (today or later).
+                  Strictly future dates only (tomorrow or later).
                 </p>
               </div>
 
@@ -252,9 +251,9 @@ export default function CreateEventPage() {
 
             {/* Location / Venue */}
             <div>
-              <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5 flex items-center gap-1.5">
-                <MapPin className="w-4 h-4 text-emerald-500" />
-                <span>Location / Venue</span> <span className="text-emerald-500">*</span>
+              <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-2 flex items-center gap-1.5">
+                <MapPin className="w-3.5 h-3.5 text-rose-500" />
+                <span>On-Ground Venue / City</span> <span className="text-rose-500">*</span>
               </label>
               <input
                 type="text"
@@ -263,14 +262,14 @@ export default function CreateEventPage() {
                 onChange={handleChange}
                 placeholder="e.g. Mohammadpur Town Hall, Dhaka"
                 required
-                className="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white placeholder-slate-400 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/30 focus:border-emerald-500 transition-all"
+                className="w-full px-4 py-3 rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white placeholder-slate-400 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/30 focus:border-indigo-500 transition-all font-medium"
               />
             </div>
 
             {/* Thumbnail Image URL */}
             <div>
-              <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5 flex items-center gap-1.5">
-                <ImageIcon className="w-4 h-4 text-emerald-500" />
+              <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-2 flex items-center gap-1.5">
+                <ImageIcon className="w-3.5 h-3.5 text-indigo-500" />
                 <span>Thumbnail Image URL</span>
               </label>
               <input
@@ -279,18 +278,18 @@ export default function CreateEventPage() {
                 value={formData.thumbnail}
                 onChange={handleChange}
                 placeholder="https://images.unsplash.com/..."
-                className="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white placeholder-slate-400 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/30 focus:border-emerald-500 transition-all"
+                className="w-full px-4 py-3 rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white placeholder-slate-400 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/30 focus:border-indigo-500 transition-all font-medium"
               />
 
               {/* Quick Preset Buttons */}
               <div className="mt-2 flex flex-wrap items-center gap-2">
-                <span className="text-xs text-slate-400">Quick presets:</span>
+                <span className="text-[11px] text-slate-400 font-medium">Suggested photos:</span>
                 {PRESET_THUMBNAILS.map((preset, i) => (
                   <button
                     key={i}
                     type="button"
                     onClick={() => setFormData({ ...formData, thumbnail: preset.url })}
-                    className="text-xs px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 hover:bg-emerald-50 dark:hover:bg-emerald-950/40 text-slate-600 dark:text-slate-300 hover:text-emerald-600 border border-slate-200 dark:border-slate-700 transition-colors"
+                    className="text-xs px-2.5 py-1 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-indigo-50 dark:hover:bg-indigo-950/40 text-slate-600 dark:text-slate-300 hover:text-indigo-600 border border-slate-200 dark:border-slate-700 transition-colors font-medium"
                   >
                     {preset.label}
                   </button>
@@ -300,9 +299,9 @@ export default function CreateEventPage() {
 
             {/* Event Description */}
             <div>
-              <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5 flex items-center gap-1.5">
-                <FileText className="w-4 h-4 text-emerald-500" />
-                <span>Event Description</span> <span className="text-emerald-500">*</span>
+              <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-2 flex items-center gap-1.5">
+                <FileText className="w-3.5 h-3.5 text-indigo-500" />
+                <span>Mission & Logistics Details</span> <span className="text-rose-500">*</span>
               </label>
               <textarea
                 name="description"
@@ -311,31 +310,31 @@ export default function CreateEventPage() {
                 onChange={handleChange}
                 placeholder="Explain the purpose of the drive, volunteers required, items being distributed or tasks to complete..."
                 required
-                className="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white placeholder-slate-400 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/30 focus:border-emerald-500 transition-all"
+                className="w-full px-4 py-3 rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white placeholder-slate-400 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/30 focus:border-indigo-500 transition-all font-medium"
               />
             </div>
 
             {/* Attached User Email Badge */}
-            <div className="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/80 dark:border-slate-700/80 flex items-center justify-between text-xs text-slate-600 dark:text-slate-400">
+            <div className="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/80 dark:border-slate-700/80 flex items-center justify-between text-xs text-slate-600 dark:text-slate-400">
               <span className="flex items-center gap-1.5">
-                <Mail className="w-4 h-4 text-emerald-500" />
-                <span>Organizer Email attached:</span>
+                <Mail className="w-4 h-4 text-indigo-500" />
+                <span>Organizer Verified Profile:</span>
               </span>
-              <span className="font-semibold text-slate-900 dark:text-white">{user.email}</span>
+              <span className="font-bold text-slate-900 dark:text-white">{user.email}</span>
             </div>
 
             {/* Submit Button */}
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full py-4 px-6 rounded-2xl text-white font-semibold bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 shadow-lg shadow-emerald-600/25 hover:shadow-emerald-600/35 transition-all duration-200 flex items-center justify-center gap-2 active:scale-[0.99] disabled:opacity-70 disabled:cursor-not-allowed"
+              className="w-full py-4 px-6 rounded-2xl text-white font-bold bg-gradient-to-r from-indigo-600 to-blue-600 hover:from-indigo-700 hover:to-blue-700 shadow-lg shadow-indigo-600/25 hover:shadow-indigo-600/35 transition-all duration-200 flex items-center justify-center gap-2 active:scale-[0.99] disabled:opacity-70 disabled:cursor-not-allowed"
             >
               {isSubmitting ? (
                 <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
               ) : (
                 <>
                   <PlusCircle className="w-5 h-5" />
-                  <span>Publish Event</span>
+                  <span>Publish Community Initiative</span>
                 </>
               )}
             </button>
