@@ -6,7 +6,10 @@ export async function GET(request: Request) {
   const state = requestUrl.searchParams.get('state') || '/events';
   const error = requestUrl.searchParams.get('error');
 
-  const appUrl = process.env.NEXT_PUBLIC_APP_URL || requestUrl.origin || 'http://localhost:3000';
+  const forwardedHost = request.headers.get('x-forwarded-host');
+  const forwardedProto = request.headers.get('x-forwarded-proto') || 'https';
+  const dynamicOrigin = forwardedHost ? `${forwardedProto}://${forwardedHost}` : requestUrl.origin;
+  const appUrl = dynamicOrigin || 'http://localhost:3000';
   const apiBase = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
 
   if (error || !code) {
