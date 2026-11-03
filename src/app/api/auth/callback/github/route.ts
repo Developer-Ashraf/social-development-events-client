@@ -29,6 +29,7 @@ export async function GET(request: Request) {
       headers: {
         'Content-Type': 'application/json',
         Accept: 'application/json',
+        'User-Agent': 'CivicPulse-App/1.0',
       },
       body: JSON.stringify({
         client_id: clientId,
@@ -43,45 +44,62 @@ export async function GET(request: Request) {
       return NextResponse.redirect(`${appUrl}/login?error=GitHub_Token_Exchange_Failed`);
     }
 
-    // 2. Fetch authenticated profile from GitHub
+    // 2. Fetch authenticated profile from GitHub (User-Agent header is strictly required by GitHub)
     const userRes = await fetch('https://api.github.com/user', {
       headers: {
         Authorization: `Bearer ${tokenData.access_token}`,
+        'User-Agent': 'CivicPulse-App/1.0',
         Accept: 'application/vnd.github.v3+json',
       },
     });
     const githubUser = await userRes.json();
+    console.log('GitHub Profile received:', {
+      login: githubUser.login,
+      name: githubUser.name,
+      avatar_url: githubUser.avatar_url,
+      email: githubUser.email,
+    });
 
-    // 3. Fetch primary email if not public in profile
+    // 3. Fetch primary verified email if not public in profile
     let email = githubUser.email;
     if (!email) {
       const emailRes = await fetch('https://api.github.com/user/emails', {
         headers: {
           Authorization: `Bearer ${tokenData.access_token}`,
+          'User-Agent': 'CivicPulse-App/1.0',
           Accept: 'application/vnd.github.v3+json',
         },
       });
       const emails = await emailRes.json();
       if (Array.isArray(emails)) {
-        const primary = emails.find((e: { primary: boolean; verified: boolean; email: string }) => e.primary && e.verified) || emails[0];
+        const primary =
+          emails.find((e: { primary: boolean; verified: boolean; email: string }) => e.primary && e.verified) ||
+          emails.find((e: { verified: boolean; email: string }) => e.verified) ||
+          emails[0];
         if (primary && primary.email) {
           email = primary.email;
         }
       }
     }
 
+    // Fallback email if completely hidden
     if (!email) {
-      email = `${githubUser.login || 'user'}@github.user`;
+      email = `${githubUser.login || 'user'}@users.noreply.github.com`;
     }
 
-    // 4. Sync with Express API backend to issue platform JWT and save to MongoDB Atlas
+    // Accurate name resolution (prioritize full name, then login handle)
+    const resolvedName = githubUser.name || githubUser.login || 'GitHub Contributor';
+    const resolvedPhoto =
+      githubUser.avatar_url || 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150';
+
+    // 4. Sync with Express API backend to update/create user and get JWT
     const syncRes = await fetch(`${apiBase}/api/auth/github`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        name: githubUser.name || githubUser.login || 'GitHub Developer',
+        name: resolvedName,
         email,
-        photoURL: githubUser.avatar_url || 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150',
+        photoURL: resolvedPhoto,
       }),
     });
 
@@ -92,7 +110,10 @@ export async function GET(request: Request) {
     }
 
     // 5. Return HTML script to store session in localStorage and redirect
-    const userJson = JSON.stringify(syncData.user);
+    const userPayload = JSON.stringify(syncData.user);
+    const tokenPayload = JSON.stringify(syncData.token);
+    const targetState = JSON.stringify(state);
+
     const html = `
       <!DOCTYPE html>
       <html>
@@ -138,15 +159,18 @@ export async function GET(request: Request) {
           <div class="card">
             <div class="spinner"></div>
             <h3 style="margin: 0 0 0.5rem 0; font-size: 1.25rem;">Authenticating with GitHub...</h3>
-            <p style="margin: 0; color: #94a3b8; font-size: 0.875rem;">Syncing verified volunteer profile and redirecting...</p>
+            <p style="margin: 0; color: #94a3b8; font-size: 0.875rem;">Loading your volunteer profile...</p>
           </div>
           <script>
             try {
-              localStorage.setItem('token', ${JSON.stringify(syncData.token)});
-              localStorage.setItem('user', JSON.stringify(${userJson}));
-              window.location.href = ${JSON.stringify(state)};
+              const token = ${tokenPayload};
+              const userObj = ${userPayload};
+              localStorage.setItem('token', token);
+              localStorage.setItem('user', JSON.stringify(userObj));
+              window.location.href = ${targetState};
             } catch (e) {
-              window.location.href = '/login';
+              console.error(e);
+              window.location.href = '/events';
             }
           </script>
         </body>

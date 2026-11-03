@@ -118,13 +118,20 @@ export default function Navbar() {
                     <div className="relative w-9 h-9 rounded-full overflow-hidden ring-2 ring-indigo-500/50 bg-indigo-100 dark:bg-indigo-950">
                       {/* eslint-disable-next-line @next/next/no-img-element */}
                       <img
-                        src={user.photoURL || 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150'}
+                        src={user.photoURL || 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=150'}
                         alt={user.name || 'User'}
+                        referrerPolicy="no-referrer"
                         className="w-full h-full object-cover"
+                        onError={(e) => {
+                          e.currentTarget.src = 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=150';
+                        }}
                       />
                     </div>
-                    <span className="text-sm font-semibold text-slate-800 dark:text-slate-200 max-w-[120px] truncate">
-                      {user.name.split(' ')[0]}
+                    <span
+                      className="text-sm font-semibold text-slate-800 dark:text-slate-200 max-w-[150px] truncate"
+                      title={user.name || 'User Profile'}
+                    >
+                      {user.name || user.email?.split('@')[0] || 'Volunteer'}
                     </span>
                     <ChevronDown className={`w-4 h-4 text-slate-500 transition-transform duration-200 ${dropdownOpen ? 'rotate-180' : ''}`} />
                   </button>
@@ -135,7 +142,7 @@ export default function Navbar() {
                       {/* User Header info */}
                       <div className="px-4 py-3 border-b border-slate-100 dark:border-slate-800 bg-slate-50/60 dark:bg-slate-950/40">
                         <p className="text-sm font-bold text-slate-900 dark:text-white truncate">
-                          {user.name}
+                          {user.name || user.email?.split('@')[0] || 'Volunteer'}
                         </p>
                         <p className="text-xs text-slate-500 dark:text-slate-400 truncate">
                           {user.email}
@@ -256,11 +263,17 @@ export default function Navbar() {
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={user.photoURL || 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150'}
-                  alt={user.name}
+                  alt={user.name || 'User'}
+                  referrerPolicy="no-referrer"
                   className="w-10 h-10 rounded-full object-cover"
+                  onError={(e) => {
+                    e.currentTarget.src = 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150';
+                  }}
                 />
                 <div className="flex-1 truncate">
-                  <p className="text-sm font-bold text-slate-900 dark:text-white truncate">{user.name}</p>
+                  <p className="text-sm font-bold text-slate-900 dark:text-white truncate">
+                    {user.name || user.email?.split('@')[0] || 'Volunteer'}
+                  </p>
                   <p className="text-xs text-slate-500 dark:text-slate-400 truncate">{user.email}</p>
                 </div>
               </div>

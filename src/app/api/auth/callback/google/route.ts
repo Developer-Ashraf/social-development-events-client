@@ -71,7 +71,10 @@ export async function GET(request: Request) {
     }
 
     // 4. Return HTML script to store session in localStorage and redirect
-    const userJson = JSON.stringify(syncData.user);
+    const userPayload = JSON.stringify(syncData.user);
+    const tokenPayload = JSON.stringify(syncData.token);
+    const targetState = JSON.stringify(state);
+
     const html = `
       <!DOCTYPE html>
       <html>
@@ -121,11 +124,14 @@ export async function GET(request: Request) {
           </div>
           <script>
             try {
-              localStorage.setItem('token', ${JSON.stringify(syncData.token)});
-              localStorage.setItem('user', JSON.stringify(${userJson}));
-              window.location.href = ${JSON.stringify(state)};
+              const token = ${tokenPayload};
+              const userObj = ${userPayload};
+              localStorage.setItem('token', token);
+              localStorage.setItem('user', JSON.stringify(userObj));
+              window.location.href = ${targetState};
             } catch (e) {
-              window.location.href = '/login';
+              console.error(e);
+              window.location.href = '/events';
             }
           </script>
         </body>

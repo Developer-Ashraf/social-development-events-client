@@ -119,8 +119,12 @@ export default function ProfilePage() {
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={formData.photoURL || user.photoURL || 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150'}
-                alt={user.name}
+                alt={user.name || 'User Profile'}
+                referrerPolicy="no-referrer"
                 className="w-full h-full object-cover"
+                onError={(e) => {
+                  e.currentTarget.src = 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150';
+                }}
               />
             </div>
 
