@@ -1,93 +1,105 @@
 import React from 'react';
-import { Camera, MapPin } from 'lucide-react';
+import { Quote, Star, MapPin, CheckCircle, Heart } from 'lucide-react';
 
-const galleryPhotos = [
+const stories = [
   {
-    image: 'https://images.unsplash.com/photo-1593113598332-cd288d649433?w=800&auto=format&fit=crop&q=80',
-    title: 'Winter Clothes Collection',
-    location: 'Mirpur, Dhaka',
-    category: 'Winter Relief'
+    quote: "When the severe northern cold wave hit Kurigram and Rangpur, CivicPulse enabled us to coordinate 1,200 heavy blankets and distribute them directly to vulnerable families in under 48 hours.",
+    author: "Rashikur Rahman",
+    role: "Community Coordinator",
+    location: "Rangpur & Kurigram",
+    avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150",
+    cause: "Winter Warmth Initiative",
+    badgeColor: "bg-blue-100 text-blue-700 dark:bg-blue-950 dark:text-blue-300"
   },
   {
-    image: 'https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?w=800&auto=format&fit=crop&q=80',
-    title: 'Warm Blanket Distribution',
-    location: 'Mohammadpur, Dhaka',
-    category: 'Humanitarian Aid'
+    quote: "Organizing the medical camp in Rayer Bazar provided free diagnostic tests and essential pediatric medicines to over 350 street children and garment workers. The transparency of this platform is unmatched.",
+    author: "Dr. Syeda Nabila",
+    role: "Public Health Fellow",
+    location: "Rayer Bazar, Dhaka",
+    avatar: "https://images.unsplash.com/photo-1594824813637-440263c9c991?w=150",
+    cause: "Community Healthcare",
+    badgeColor: "bg-rose-100 text-rose-700 dark:bg-rose-950 dark:text-rose-300"
   },
   {
-    image: 'https://images.unsplash.com/photo-1618477461853-cf6ed80faba5?w=800&auto=format&fit=crop&q=80',
-    title: 'Dhanmondi Lake Clean-Up',
-    location: 'Dhanmondi, Dhaka',
-    category: 'Environmental'
-  },
-  {
-    image: 'https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=800&auto=format&fit=crop&q=80',
-    title: 'Urban Tree Plantation Drive',
-    location: 'Uttara, Dhaka',
-    category: 'Green City'
-  },
-  {
-    image: 'https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=800&auto=format&fit=crop&q=80',
-    title: 'Community Food Sharing',
-    location: 'Rayer Bazar, Dhaka',
-    category: 'Nutrition'
-  },
-  {
-    image: 'https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=800&auto=format&fit=crop&q=80',
-    title: 'Children Book & Bag Drive',
-    location: 'Kamalapur, Dhaka',
-    category: 'Education'
+    quote: "Mobilizing 45 student volunteers to restore native mangrove saplings and clean plastic waste along the coastal belt proved to me that our generation is ready to protect our ecology with our own hands.",
+    author: "Tanvir Hasan",
+    role: "Youth Climate Advocate",
+    location: "Cox's Bazar & Chattogram",
+    avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150",
+    cause: "Ecological Restoration",
+    badgeColor: "bg-emerald-100 text-emerald-700 dark:bg-emerald-950 dark:text-emerald-300"
   }
 ];
 
 export default function CommunityGallery() {
   return (
-    <section className="py-20 bg-slate-50/60 dark:bg-slate-950/40 border-b border-slate-200/60 dark:border-slate-800">
+    <section className="py-20 md:py-28 bg-white dark:bg-slate-950 border-b border-slate-200/80 dark:border-slate-800/80 transition-colors">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-100 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 text-xs font-semibold mb-3">
-            <Camera className="w-3.5 h-3.5" />
-            <span>Visual Stories</span>
+          <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-indigo-50 dark:bg-indigo-950/60 border border-indigo-200/80 dark:border-indigo-800/50 text-indigo-700 dark:text-indigo-300 text-xs font-bold uppercase tracking-wider mb-3">
+            <Heart className="w-3.5 h-3.5 fill-indigo-600 text-indigo-600 dark:fill-indigo-400 dark:text-indigo-400" />
+            <span>Real On-Ground Experiences</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">
-            Community in Action
+          <h2 className="text-3xl sm:text-4xl font-black text-slate-900 dark:text-white tracking-tight">
+            Voices of Changemakers Leading the Frontlines
           </h2>
-          <p className="mt-3 text-base text-slate-600 dark:text-slate-300">
-            Moments from volunteer drives, relief distributions, and green initiatives across Dhaka and beyond.
+          <p className="mt-3 text-base text-slate-600 dark:text-slate-400">
+            Hear directly from student volunteers, healthcare professionals, and neighborhood organizers driving civic transformation.
           </p>
         </div>
 
-        {/* Gallery Photo Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {galleryPhotos.map((item, index) => (
+        {/* Testimonials / Impact Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {stories.map((item, index) => (
             <div
               key={index}
-              className="group relative rounded-3xl overflow-hidden aspect-[4/3] bg-slate-200 dark:bg-slate-800 shadow-sm hover:shadow-xl transition-all duration-300"
+              className="flex flex-col justify-between rounded-3xl bg-slate-50/70 dark:bg-slate-900/60 border border-slate-200/80 dark:border-slate-800/80 p-8 hover:border-indigo-500/40 dark:hover:border-indigo-500/40 hover:shadow-xl hover:shadow-indigo-500/5 transition-all duration-300 group"
             >
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src={item.image}
-                alt={item.title}
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-              />
+              <div className="space-y-4">
+                {/* Quote Icon & Cause Tag */}
+                <div className="flex items-center justify-between">
+                  <div className="w-10 h-10 rounded-2xl bg-indigo-100 dark:bg-indigo-950/70 text-indigo-600 dark:text-indigo-400 flex items-center justify-center">
+                    <Quote className="w-5 h-5 fill-indigo-600/20" />
+                  </div>
+                  <span className={`px-3 py-1 rounded-full text-xs font-bold ${item.badgeColor}`}>
+                    {item.cause}
+                  </span>
+                </div>
 
-              {/* Gradient Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/30 to-transparent opacity-80 group-hover:opacity-90 transition-opacity" />
+                {/* Stars rating */}
+                <div className="flex items-center gap-1 text-amber-400">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} className="w-4 h-4 fill-amber-400" />
+                  ))}
+                </div>
 
-              {/* Caption Content */}
-              <div className="absolute inset-x-0 bottom-0 p-6 text-white space-y-1">
-                <span className="inline-block px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-emerald-600/90 text-white mb-1.5 backdrop-blur-sm">
-                  {item.category}
-                </span>
-                <h3 className="text-lg font-bold leading-tight group-hover:text-emerald-300 transition-colors">
-                  {item.title}
-                </h3>
-                <p className="flex items-center gap-1.5 text-xs text-slate-300">
-                  <MapPin className="w-3.5 h-3.5 text-emerald-400" />
-                  <span>{item.location}</span>
+                {/* Quote Text */}
+                <p className="text-sm text-slate-700 dark:text-slate-300 leading-relaxed italic">
+                  &ldquo;{item.quote}&rdquo;
                 </p>
+              </div>
+
+              {/* Author attribution footer */}
+              <div className="pt-6 mt-6 border-t border-slate-200/60 dark:border-slate-800/80 flex items-center gap-3.5">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={item.avatar}
+                  alt={item.author}
+                  className="w-11 h-11 rounded-full object-cover ring-2 ring-indigo-500/30"
+                />
+                <div>
+                  <h4 className="text-sm font-bold text-slate-900 dark:text-white flex items-center gap-1">
+                    <span>{item.author}</span>
+                    <CheckCircle className="w-3.5 h-3.5 text-blue-500 shrink-0" />
+                  </h4>
+                  <p className="text-xs text-slate-500 dark:text-slate-400">{item.role}</p>
+                  <p className="flex items-center gap-1 text-[11px] text-slate-400 dark:text-slate-500 mt-0.5">
+                    <MapPin className="w-3 h-3 text-slate-400" />
+                    <span>{item.location}</span>
+                  </p>
+                </div>
               </div>
             </div>
           ))}
