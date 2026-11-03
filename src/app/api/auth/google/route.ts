@@ -1,11 +1,11 @@
 import { NextResponse } from 'next/server';
 
 export async function GET(request: Request) {
-  const { searchParams } = new URL(request.url);
-  const redirectAfter = searchParams.get('redirect') || '/events';
+  const requestUrl = new URL(request.url);
+  const redirectAfter = requestUrl.searchParams.get('redirect') || '/events';
 
   const clientId = process.env.GOOGLE_CLIENT_ID || process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID;
-  const appUrl = process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000';
+  const appUrl = process.env.NEXT_PUBLIC_APP_URL || requestUrl.origin || 'http://localhost:3000';
   const redirectUri = `${appUrl}/api/auth/callback/google`;
 
   if (!clientId || clientId === 'your_google_client_id_here') {

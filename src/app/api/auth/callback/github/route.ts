@@ -1,12 +1,12 @@
 import { NextResponse } from 'next/server';
 
 export async function GET(request: Request) {
-  const { searchParams } = new URL(request.url);
-  const code = searchParams.get('code');
-  const state = searchParams.get('state') || '/events';
-  const error = searchParams.get('error');
+  const requestUrl = new URL(request.url);
+  const code = requestUrl.searchParams.get('code');
+  const state = requestUrl.searchParams.get('state') || '/events';
+  const error = requestUrl.searchParams.get('error');
 
-  const appUrl = process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000';
+  const appUrl = process.env.NEXT_PUBLIC_APP_URL || requestUrl.origin || 'http://localhost:3000';
   const apiBase = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
 
   if (error || !code) {
