@@ -47,18 +47,12 @@ function LoginForm() {
     }
   };
 
-  const handleGoogleSignIn = async () => {
-    const success = await loginWithGoogle();
-    if (success) {
-      router.push(redirectUrl);
-    }
+  const handleGoogleSignIn = () => {
+    window.location.href = `/api/auth/google?redirect=${encodeURIComponent(redirectUrl)}`;
   };
 
-  const handleGitHubSignIn = async () => {
-    const success = await loginWithGitHub();
-    if (success) {
-      router.push(redirectUrl);
-    }
+  const handleGitHubSignIn = () => {
+    window.location.href = `/api/auth/github?redirect=${encodeURIComponent(redirectUrl)}`;
   };
 
   return (

@@ -61,18 +61,12 @@ export default function RegisterPage() {
     }
   };
 
-  const handleGoogleSignIn = async () => {
-    const success = await loginWithGoogle();
-    if (success) {
-      router.push('/events');
-    }
+  const handleGoogleSignIn = () => {
+    window.location.href = `/api/auth/google?redirect=${encodeURIComponent('/events')}`;
   };
 
-  const handleGitHubSignIn = async () => {
-    const success = await loginWithGitHub();
-    if (success) {
-      router.push('/events');
-    }
+  const handleGitHubSignIn = () => {
+    window.location.href = `/api/auth/github?redirect=${encodeURIComponent('/events')}`;
   };
 
   return (
