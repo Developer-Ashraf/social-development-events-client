@@ -5,7 +5,8 @@ A modern, responsive, and community-driven event management platform where citiz
 ---
 
 ## 🔗 Live Application & Repositories
-- **Live Website URL:** [https://social-development-events-client.vercel.app](https://social-development-events-client.vercel.app)
+- **Live Website URL:** [https://social-development-events-client-liart.vercel.app](https://social-development-events-client-liart.vercel.app)
+- **Live Server API:** [https://social-development-events-server-nine.vercel.app](https://social-development-events-server-nine.vercel.app)
 - **Client Side Repository:** [https://github.com/Developer-Ashraf/social-development-events-client](https://github.com/Developer-Ashraf/social-development-events-client)
 - **Server Side Repository:** [https://github.com/Developer-Ashraf/social-development-events-server](https://github.com/Developer-Ashraf/social-development-events-server)
 
