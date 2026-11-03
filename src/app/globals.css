@@ -9,18 +9,18 @@
   --card-foreground: #0f172a;
   --border: #e2e8f0;
   --input: #e2e8f0;
-  --primary: #059669;
+  --primary: #4f46e5;
   --primary-foreground: #ffffff;
 }
 
 .dark {
-  --background: #090e17;
+  --background: #070b14;
   --foreground: #f8fafc;
   --card: #0f172a;
   --card-foreground: #f8fafc;
   --border: #1e293b;
   --input: #1e293b;
-  --primary: #10b981;
+  --primary: #6366f1;
   --primary-foreground: #ffffff;
 }
 

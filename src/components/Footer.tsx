@@ -2,36 +2,37 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { HeartHandshake, MapPin, Mail, Phone, Heart } from 'lucide-react';
+import { Compass, MapPin, Mail, Phone, Heart, Sparkles, ShieldCheck } from 'lucide-react';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="mt-auto bg-slate-900 text-slate-300 border-t border-slate-800">
+    <footer className="mt-auto bg-slate-950 text-slate-300 border-t border-slate-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
           
           {/* Column 1: Brand Info */}
           <div className="space-y-4">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-2xl bg-gradient-to-tr from-emerald-500 to-teal-400 flex items-center justify-center text-white shadow-md shadow-emerald-500/20">
-                <HeartHandshake className="w-6 h-6" />
+              <div className="w-10 h-10 rounded-2xl bg-gradient-to-tr from-indigo-600 via-blue-600 to-violet-600 flex items-center justify-center text-white shadow-md shadow-indigo-500/20">
+                <Compass className="w-5 h-5 stroke-[2.2]" />
               </div>
-              <span className="text-2xl font-bold tracking-tight text-white">
-                Kindred<span className="text-emerald-400">Serve</span>
+              <span className="text-2xl font-black tracking-tight text-white flex items-center gap-1">
+                Civic<span className="text-indigo-400">Pulse</span>
+                <span className="w-2 h-2 rounded-full bg-amber-500 ml-0.5" />
               </span>
             </div>
-            <p className="text-sm text-slate-400 leading-relaxed">
-              A grassroots, community-driven social development events platform empowering citizens to organize, join, and track impactful service drives in their neighborhood.
+            <p className="text-xs text-slate-400 leading-relaxed">
+              CivicPulse is an open grassroots community network enabling citizens and youth leaders to organize, discover, and lead high-impact civic and welfare drives.
             </p>
             <div className="flex items-center gap-3 pt-2">
-              {/* New X (Twitter) Logo */}
+              {/* X / Twitter */}
               <a
                 href="https://x.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-9 h-9 rounded-xl bg-slate-800 hover:bg-slate-700 flex items-center justify-center text-slate-300 hover:text-white transition-colors"
+                className="w-9 h-9 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-800 flex items-center justify-center text-slate-300 hover:text-white transition-colors"
                 aria-label="Follow us on X"
               >
                 <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
@@ -44,7 +45,7 @@ export default function Footer() {
                 href="https://github.com/Developer-Ashraf"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-9 h-9 rounded-xl bg-slate-800 hover:bg-slate-700 flex items-center justify-center text-slate-300 hover:text-white transition-colors"
+                className="w-9 h-9 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-800 flex items-center justify-center text-slate-300 hover:text-white transition-colors"
                 aria-label="GitHub Profile"
               >
                 <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
@@ -57,7 +58,7 @@ export default function Footer() {
                 href="https://linkedin.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-9 h-9 rounded-xl bg-slate-800 hover:bg-slate-700 flex items-center justify-center text-slate-300 hover:text-white transition-colors"
+                className="w-9 h-9 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-800 flex items-center justify-center text-slate-300 hover:text-white transition-colors"
                 aria-label="LinkedIn"
               >
                 <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
@@ -67,76 +68,76 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Column 2: Quick Links */}
-          <div className="space-y-4">
-            <h3 className="text-base font-semibold text-white tracking-wider uppercase">Platform Navigation</h3>
-            <ul className="space-y-2.5 text-sm">
+          {/* Column 2: Navigation */}
+          <div className="space-y-3">
+            <h3 className="text-xs font-bold text-white tracking-wider uppercase">Direct Access</h3>
+            <ul className="space-y-2 text-xs">
               <li>
-                <Link href="/" className="hover:text-emerald-400 transition-colors">Home Page</Link>
+                <Link href="/" className="hover:text-indigo-400 transition-colors">Home Page</Link>
               </li>
               <li>
-                <Link href="/events" className="hover:text-emerald-400 transition-colors">Upcoming Events</Link>
+                <Link href="/events" className="hover:text-indigo-400 transition-colors">All Upcoming Drives</Link>
               </li>
               <li>
-                <Link href="/create-event" className="hover:text-emerald-400 transition-colors">Create an Event</Link>
+                <Link href="/create-event" className="hover:text-indigo-400 transition-colors">Launch an Initiative</Link>
               </li>
               <li>
-                <Link href="/manage-events" className="hover:text-emerald-400 transition-colors">Manage My Events</Link>
+                <Link href="/manage-events" className="hover:text-indigo-400 transition-colors">Organizer Dashboard</Link>
               </li>
               <li>
-                <Link href="/joined-events" className="hover:text-emerald-400 transition-colors">My Joined Drives</Link>
+                <Link href="/joined-events" className="hover:text-indigo-400 transition-colors">My Pledged Drives</Link>
               </li>
             </ul>
           </div>
 
-          {/* Column 3: Active Causes */}
-          <div className="space-y-4">
-            <h3 className="text-base font-semibold text-white tracking-wider uppercase">Active Social Causes</h3>
-            <ul className="space-y-2.5 text-sm text-slate-400">
+          {/* Column 3: Active Campaigns */}
+          <div className="space-y-3">
+            <h3 className="text-xs font-bold text-white tracking-wider uppercase">Pillars of Impact</h3>
+            <ul className="space-y-2 text-xs text-slate-400">
+              <li className="flex items-center gap-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-blue-500" />
+                <span>Winter Thermal & Blanket Distribution</span>
+              </li>
               <li className="flex items-center gap-2">
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
-                <span>Winter Clothes & Blanket Relief</span>
-              </li>
-              <li className="flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-teal-500" />
-                <span>Neighborhood Clean-up Drives</span>
-              </li>
-              <li className="flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
-                <span>Urban Tree Plantation Projects</span>
-              </li>
-              <li className="flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-amber-500" />
-                <span>Nutritious Food Sharing Campaigns</span>
+                <span>Urban Afforestation & Park Cleanups</span>
               </li>
               <li className="flex items-center gap-2">
                 <span className="w-1.5 h-1.5 rounded-full bg-rose-500" />
-                <span>Free Medical & Eye Checkup Camps</span>
+                <span>Free Medical & Pediatric Health Camps</span>
+              </li>
+              <li className="flex items-center gap-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-amber-500" />
+                <span>Cooked Meals & Dry Grocery Rations</span>
+              </li>
+              <li className="flex items-center gap-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-violet-500" />
+                <span>Slum Children Education & School Drives</span>
               </li>
             </ul>
           </div>
 
-          {/* Column 4: Contact & Community Spirit */}
-          <div className="space-y-4">
-            <h3 className="text-base font-semibold text-white tracking-wider uppercase">Community Support</h3>
-            <div className="space-y-3 text-sm text-slate-400">
-              <p className="flex items-start gap-2.5">
-                <MapPin className="w-4 h-4 text-emerald-400 mt-0.5 shrink-0" />
-                <span>Mirpur, Mohammadpur & Dhanmondi, Dhaka, Bangladesh</span>
+          {/* Column 4: Contact & Verification */}
+          <div className="space-y-3">
+            <h3 className="text-xs font-bold text-white tracking-wider uppercase">Civic Network Desk</h3>
+            <div className="space-y-2.5 text-xs text-slate-400">
+              <p className="flex items-start gap-2">
+                <MapPin className="w-3.5 h-3.5 text-indigo-400 mt-0.5 shrink-0" />
+                <span>Dhaka, Chattogram, Sylhet, Rangpur & Rajshahi, Bangladesh</span>
               </p>
-              <p className="flex items-center gap-2.5">
-                <Mail className="w-4 h-4 text-emerald-400 shrink-0" />
-                <span>volunteer@kindredserve.org</span>
+              <p className="flex items-center gap-2">
+                <Mail className="w-3.5 h-3.5 text-indigo-400 shrink-0" />
+                <span>contact@civicpulse.org</span>
               </p>
-              <p className="flex items-center gap-2.5">
-                <Phone className="w-4 h-4 text-emerald-400 shrink-0" />
+              <p className="flex items-center gap-2">
+                <Phone className="w-3.5 h-3.5 text-indigo-400 shrink-0" />
                 <span>+880 1700-000000</span>
               </p>
             </div>
-            <div className="p-3.5 rounded-xl bg-slate-800/80 border border-slate-700/60">
-              <p className="text-xs text-slate-300 flex items-center gap-1.5">
-                <Heart className="w-3.5 h-3.5 text-rose-500 fill-rose-500" />
-                <span>100% Volunteer Driven & Non-Profit</span>
+            <div className="p-3 rounded-2xl bg-slate-900 border border-slate-800">
+              <p className="text-[11px] text-slate-300 flex items-center gap-1.5">
+                <ShieldCheck className="w-3.5 h-3.5 text-indigo-400" />
+                <span>Zero Commercial Ads • 100% Volunteer Led</span>
               </p>
             </div>
           </div>
@@ -145,11 +146,12 @@ export default function Footer() {
 
         {/* Bottom Bar */}
         <div className="mt-12 pt-8 border-t border-slate-800/80 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400">
-          <p>© {currentYear} KindredServe. Built for community social service.</p>
+          <p>© {currentYear} CivicPulse Platform. All rights reserved.</p>
           <p className="flex items-center gap-1">
-            Made with dedication by <span className="text-white font-medium">Ashraful Islam</span>
+            Built with care by <span className="text-white font-semibold">Ashraful Islam</span>
           </p>
         </div>
+
       </div>
     </footer>
   );

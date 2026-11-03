@@ -7,8 +7,8 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
-  title: 'KindredServe | Community-Driven Social Development Events Platform',
-  description: 'Create, join, and track impactful local community and social service initiatives in your neighborhood.',
+  title: 'CivicPulse | Grassroots Community Action & Social Development Platform',
+  description: 'Empowering citizens and youth leaders to organize, discover, and lead high-impact civic and welfare drives.',
 };
 
 export default function RootLayout({
@@ -18,7 +18,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className="antialiased selection:bg-emerald-500 selection:text-white flex flex-col min-h-screen">
+      <body className="antialiased selection:bg-indigo-500 selection:text-white flex flex-col min-h-screen">
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
